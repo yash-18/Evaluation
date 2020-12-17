@@ -1,0 +1,35 @@
+<h1> Total {{totalMob()}} Mobiles are in stock </h1>
+<ul>
+    <li *ngFor="let mob of mobInfo">
+      <div class="col s12 m8 ">
+        <div class="card mob">
+          <div class="card-image waves-effect waves-block waves-light">
+            <img class="activator" [src]="mob.img " width="200" height="200" />
+          </div>
+
+          <div class="card-reveal">
+           
+            <p>
+              ID :
+              <b>{{ mob.id  }}</b>
+            </p>
+            <div [ngStyle]="{ mobCol: true }">
+              Name : <b>{{ mob.name}}</b>
+            </div>
+            <div [style.color]="mob.col">
+              Price : <b>{{ mob.price }}</b>
+            </div>
+            <div *ngIf="mob.inStock > 0; else abc">
+              Only <b>{{ mob.inStock }}</b> Mobiles left in Stock
+            </div>
+            <ng-template #abc>
+              out of stock
+            </ng-template>
+            
+          </div>
+        </div>
+      </div>
+    </li>
+  </ul>
+  
+
